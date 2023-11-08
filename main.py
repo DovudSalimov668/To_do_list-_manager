@@ -92,7 +92,7 @@ while enter_1 == True:
 
 
             elif choice == "8":
-                todo_list.today_tasks()
+                todo_list.today_taskes_2()
                            
 
             elif choice == "7":

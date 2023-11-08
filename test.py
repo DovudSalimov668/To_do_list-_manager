@@ -12,22 +12,21 @@ with open("taskes.txt","r") as file:
             for line in file.read().splitlines():
                 line_split = line.split("|")
                 print(line_split)
-                # spl6 = str(line_split[6])
-                # print(str(line_split[6]))
-                # print(str(line_split[6]).split('-'))
-                # line_split_6 = str(line_split[6]).split('-')
-                # day_user_input = int(line_split_6[0])
-                # month_user_input = int(line_split_6[1])
-                # year_user_input = int(line_split_6[2])
-                # print(day_user_input)
-                # print(month_user_input)
-                # print(year_user_input)
-                # if day_user_input == day_now and month_user_input == month_now and year_user_input == year_now:
-                #         print(line)
-                
-                
+                print(str(line_split[1].split(":")).split("-"))
+                line_split_1 = str(line_split[1])
+                print(line_split_1.split(":"))
+                line_split_1_1 = line_split_1.split(":")
+                line_split_1_1_1 = line_split_1_1[1]
+                line_splited_to_str_nums = line_split_1_1_1.split("-")
+                line_splited_to_str_nums_day = int(line_splited_to_str_nums[0])
+                line_splited_to_str_nums_month = int(line_splited_to_str_nums[1])
+                line_splited_to_str_nums_year = int(line_splited_to_str_nums[2])
+                print(int(line_splited_to_str_nums_day))
+                print(int(line_splited_to_str_nums_month))
+                print(int(line_splited_to_str_nums_year))
 
-                # if spl6 == day_now:
-                #         print(line)
-                
-                    
+                if line_splited_to_str_nums_day == day_now and line_splited_to_str_nums_month == month_now and line_splited_to_str_nums_year == year_now:
+                        print(line)
+
+
+              
