@@ -10,6 +10,7 @@ class Registration:
             print("Ваш логин и пароль успешно сохранены.")  
 
     def check_user(self,login:str,password: str):
+        
         self.login =  login
         self.password = password
         with open("users.txt","r") as file:
@@ -18,10 +19,12 @@ class Registration:
               
                 if line_split[0] == login and line_split[1] == password:
                     print("We have that user.")
-                    return True
-        #         else:  
-        #             check = False
-        # # if check == False:
-        #         print("We don't have that one.")   
+                    check = True
+
+                    return check
+                else:  
+                    # check = False
+                    # print("We don't have that one.")   
+                    pass
         
                 

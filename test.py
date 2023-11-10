@@ -27,6 +27,7 @@ with open("taskes.txt","r") as file:
 
                 if line_splited_to_str_nums_day == day_now and line_splited_to_str_nums_month == month_now and line_splited_to_str_nums_year == year_now:
                         print(line)
+                        
 
 
               

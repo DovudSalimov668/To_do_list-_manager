@@ -23,96 +23,110 @@ class ToDoList:
     def __init__(self):
         self.tasks = []
 
-    # def __str__(self):
-    #     return self.tasks    
-
     def add_task(self, task):
         self.tasks.append(task)
-
-
-    def append_taskes(self,title: str, description: str, priority: str, due_date:int):
-        self.title = title
-        self.description = description
-        self.priority = priority
-        self.due_date = due_date        
         with open("taskes.txt","r") as file:
-            file.read().splitlines()
+                file.read().splitlines()
         with open("taskes.txt","a") as file:
-            file.write(f"{title}:{description}:{priority}:{due_date}\n") 
-            print("успешно сохранены.")   
-        with open("taskes.txt","r") as file:
-             for line in file.read().splitlines():
-                line_split = line.split(':')
-              
-                if line_split[3] == day_now:
-                    print(line)
-                    return True
+                    file.write(f"{task.title} - priority: {task.priority} : | due_date: {task.due_date} |status:Not completed\n")
 
+        
+
+
+  
 
          
 
-    def remove_task(self, task):
-        self.tasks.remove(task)
+    def remove_task(self):
+            name = input("Input task name: ")
+            with open('taskes.txt', 'r') as file:
+                lines = file.readlines()
+            with open('taskes.txt', 'w') as file:
+                for line in lines:
+                    if not line.startswith(name):
+                        file.write(line)
+                print("task was deleted")
 
     def view_tasks(self):
-        if not self.tasks:
-            print("Список задач пуст.")
-            return
+          with open("taskes.txt","r") as file:
+                
+                for line in file.read().splitlines():
+                    print(line)
 
-        for index, task in enumerate(self.tasks,1):
-            if task.is_completed:
-                status = "Completed"
-            else:
-                status = ("Not completed" )  
-
-            print(f"{index}. {task.title} - Приоритет: {task.priority}, Срок: {task.due_date}, Статус: {status}")
-            with open("taskes.txt","r") as file:
-                file.read().splitlines()
-            with open("taskes.txt","a") as file:
-                file.write(f"{index}. {task.title} - priority: {task.priority} | due_date: {task.due_date} | status: {status}\n")
-
-        
-    def today_tasks(self):
-                            
-        with open("taskes.txt","r") as file:
-            for line in file.read().splitlines():
-                line_split = line.split()
-                line_split_6 = str(line_split[6]).split('-')
-                day_user_input = int(line_split_6[0])
-                month_user_input = int(line_split_6[1])
-                year_user_input = int(line_split_6[2])
-                if day_user_input == day_now and month_user_input == month_now and year_user_input == year_now:
-                        print(line)
-
-
-    def today_taskes_2(self):
-                      
+    def today_taskes_2(self):            
         with open("taskes.txt","r") as file:
                     for line in file.read().splitlines():
                         line_split = line.split("|")
-                        # print(line_split)
-                        # print(str(line_split[1].split(":")).split("-"))
+
                         line_split_1 = str(line_split[1])
-                        # print(line_split_1.split(":"))
+                        
                         line_split_1_1 = line_split_1.split(":")
                         line_split_1_1_1 = line_split_1_1[1]
                         line_splited_to_str_nums = line_split_1_1_1.split("-")
                         line_splited_to_str_nums_day = int(line_splited_to_str_nums[0])
                         line_splited_to_str_nums_month = int(line_splited_to_str_nums[1])
                         line_splited_to_str_nums_year = int(line_splited_to_str_nums[2])
-                        # print(int(line_splited_to_str_nums_day))
-                        # print(int(line_splited_to_str_nums_month))
-                        # print(int(line_splited_to_str_nums_year))
-
                         if line_splited_to_str_nums_day == day_now and line_splited_to_str_nums_month == month_now and line_splited_to_str_nums_year == year_now:
-                                print(line)                    
+                                print(line) 
+                            
                                     
 
-    def complete_task(self, task):
-        task.is_completed = True
+    def complete_task(self):
+        name = input("Input task name: ")
+        with open('taskes.txt', 'r') as file:
+            lines = file.readlines()
+        with open('taskes.txt', 'w') as file:
+            for line in lines: 
+                line_split = line.split('|')
+                print(line_split)
+               
+                if name ==line_split[0].split("-")[0].strip():
+                    print(line_split[0].split("-")[0].strip())
+    
+                    if line_split[2].strip() == 'status:Not completed':
+                        line_split[2] = 'status: Completed\n'
+                    line = '|'.join(line_split)
+                file.write(line)
+                       
+                               
+        
 
     def order_by_priority(self):
-        self.tasks.sort(key=lambda task: task.priority)
+        sort_list = []
+        sort_prior = []
+        # self.tasks.sort(key=lambda task: task.priority)
+        with open('taskes.txt', 'r') as file:
+            lines = file.readlines()
+            with open('taskes.txt', 'r') as file:
+                for line in lines:
+                        sort_list.append(line)
+                        sort_prior.append(line.split(":")[1])
+
+
+            
+            print(sort_prior)
+            sorted_prior = sorted(sort_prior)
+            print(sorted_prior)
+                        
+            print(sort_list) 
+            print(str(sort_list[0]).split("|")[0].split(":")[1])
+            # for i in range(1,len(sort_list)):
+            #     print(i)
+            for i in range(len(sort_list)):
+                
+                # print(str(sort_list[i]).split("|")[0].split(":")[1])
+                if sorted_prior[i] == str(sort_list[i]).split("|")[0].split(":")[1]:
+                    print(sort_list[i])
+                    # print(str(sort_list[i]).split("|")[0].split(":")[1])
+              
+           
+            
+                  
+                      
+                 
+                 
+                  
+
 
     def order_by_due_date(self):
         self.tasks.sort(key=lambda task: task.due_date)
