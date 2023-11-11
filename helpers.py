@@ -108,12 +108,11 @@ class ToDoList:
             sorted_prior = sorted(sort_prior)
             print(sorted_prior)
                         
-            print(sort_list) 
-            print(str(sort_list[0]).split("|")[0].split(":")[1])
+            # print(sort_list) 
+            # print(str(sort_list[0]).split("|")[0].split(":")[1])
             # for i in range(1,len(sort_list)):
             #     print(i)
-            for i in range(len(sort_list)):
-                
+            for i in str(sort_list[i]).split("|")[0].split(":")[1]:
                 # print(str(sort_list[i]).split("|")[0].split(":")[1])
                 if sorted_prior[i] == str(sort_list[i]).split("|")[0].split(":")[1]:
                     print(sort_list[i])
